@@ -12,3 +12,15 @@ where:
 - `<tag>` is the current GitHub tag without the "v"
 
 The docker image can be found [here](https://hub.docker.com/r/rzuckerm/quackery).
+
+## Running Quakery
+
+```
+run_quackery <filename> [<args> ...]
+```
+
+where:
+
+- `<filename>` is the filename of the Quackery program
+- `<args>` are command-line arguments passed to the program as newline delimited arguments
+  passed to stdin

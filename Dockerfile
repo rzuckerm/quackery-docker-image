@@ -1,6 +1,6 @@
 FROM python:3.10-alpine3.18
 
-COPY QUACKERY_* /tmp/
+COPY QUACKERY_* run_quackery /tmp/
 RUN apk update && \
     apk add git && \
     mkdir -p /opt && \
@@ -8,5 +8,7 @@ RUN apk update && \
     git clone https://github.com/GordonCharlton/Quackery/ quackery && \
     cd quackery && \
     git reset --hard $(cat /tmp/QUACKERY_COMMIT_HASH) && \
-    find . -mindepth 1 -maxdepth 1 '!' -name 'quackery.py' -exec rm -rf '{}' ';' && \
+    mv /tmp/run_quackery /opt/quackery/quackery.py /usr/local/bin/ && \
+    cd / && \
+    rm -rf /opt/quackery && \
     apk del git
